@@ -1,4 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <database>
-    <element extends="task" label="Loaner Request" max_length="40" name="x_snc_loaner_reque_loaner_request" sizeclass="5" type="collection"/>
+    <element extends="task" label="Loaner Request" max_length="40" name="x_snc_loaner_reque_loaner_request" sizeclass="10" type="collection">
+        <element attributes="barcode,edge_encryption_enabled=true" label="Asset Barcode" max_length="40" name="asset_barcode" type="string"/>
+        <element attributes="edge_encryption_enabled=true" choice="1" default="Santa Clara" label="Depot" max_length="40" name="depot" type="string">
+            <choice>
+                <element label="New York" sequence="0" value="New York"/>
+                <element label="London" sequence="1" value="London"/>
+                <element label="Buenos Aires" sequence="2" value="Buenos Aires"/>
+                <element label="Santa Clara" sequence="3" value="Santa Clara"/>
+                <element label="Singapore" sequence="4" value="Singapore"/>
+                <element label="Sydney" sequence="5" value="Sydney"/>
+                <element label="Other" sequence="6" value="Other"/>
+            </choice>
+        </element>
+        <element label="End Date" mandatory="true" max_length="40" name="end_date" type="glide_date_time"/>
+        <element attributes="edge_encryption_enabled=true" choice="1" label="Item type" max_length="40" name="item_type" type="string">
+            <choice>
+                <element label="Laptop" sequence="0" value="cmdb_ci_computer"/>
+                <element label="Mobile Phone" sequence="1" value="cmdb_ci_mobile_device"/>
+                <element label="Projector" sequence="2" value="cmdb_ci_projector"/>
+            </choice>
+        </element>
+        <element attributes="edge_encryption_enabled=true" label="Locationo to be used" max_length="40" name="location_to_be_used" type="string"/>
+        <element attributes="edge_encryption_enabled=true" label="Other" max_length="40" name="other" type="string"/>
+        <element label="Overdue Count" max_length="40" name="overdue_count" type="integer"/>
+        <element label="Overdue reminder" max_length="40" name="overdue_reminder" type="glide_date_time"/>
+        <element label="Pick up reminder" max_length="40" name="pick_up_reminder" type="glide_date_time"/>
+        <element label="Requested for" mandatory="true" max_length="32" name="requested_for" reference="sys_user" type="reference"/>
+        <element label="Return reminder" max_length="40" name="return_reminder" type="glide_date_time"/>
+        <element label="Start Date" mandatory="true" max_length="40" name="start_date" type="glide_date_time"/>
+    </element>
 </database>
